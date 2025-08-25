@@ -8,7 +8,7 @@ import {
   ChevronsRight,
   LogOut,
 } from "lucide-react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 const SidebarContext = createContext();
@@ -16,6 +16,26 @@ const SidebarContext = createContext();
 export default function SidebarLayout({ children }) {
   const [expanded, setExpanded] = useState(true);
   const location = useLocation();
+  const [dateTime, setDateTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDateTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formattedDate = dateTime.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  const formattedTime = dateTime.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  });
 
   // Generate a page title from the current route
   const path =
@@ -33,10 +53,14 @@ export default function SidebarLayout({ children }) {
       >
         <nav className="h-full flex flex-col bg-SidebarBlue border-r shadow-sm">
           {/* Logo (fixed at top) */}
-          <div className="p-4 pb-2">
+          <div
+            className={`p-4 pb-2 flex ${
+              expanded ? "justify-center" : "justify-start"
+            }`}
+          >
             <img
               src={expanded ? SentrinusWhite2 : SentrinusWhite}
-              className={`${expanded ? "w-28" : "w-12"}`}
+              className={`${expanded ? "w-40 mt-5" : "w-12"}`}
               alt="Sentrinus"
             />
           </div>
@@ -80,8 +104,27 @@ export default function SidebarLayout({ children }) {
       {/* Main Content */}
       <main className="flex-1 bg-gray-50">
         <div className="flex items-center justify-between gap-3 px-4 py-3 bg-gray-50">
-          <h1 className="font-medium tracking-tighter text-4xl">{path}</h1>
+          <h1 className="font-medium tracking-tighter text-3xl">{path}</h1>
+
+          {/* Search + DateTime */}
+          <div className="flex items-center gap-2">
+            {/* Search Bar */}
+            <div className="w-72">
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-full px-3 py-1.5 text-sm border-2 border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+              />
+            </div>
+
+            {/* Date & Time */}
+            <div className="text-right">
+              <p className="">{formattedDate}</p>
+              <p className="text-sm">{formattedTime}</p>
+            </div>
+          </div>
         </div>
+
         <div className="flex-1 overflow-hidden">
           <Outlet />
         </div>
@@ -104,7 +147,7 @@ export function SidebarItem({ icon, text, isOrganization, to }) {
           isOrganization
             ? "bg-Gray text-white"
             : isActive
-            ? "bg-Gray text-blue-400"
+            ? "bg-blue-600 text-white"
             : "hover:bg-Gray/50 hover:text-white text-TextGray"
         }
         ${expanded ? "px-4 py-2" : "justify-center py-2"}

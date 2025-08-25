@@ -1,3 +1,5 @@
+import { Button } from "antd";
+
 export default function RequestCard({ icon, type, user }) {
   return (
     <div className="flex items-center justify-between mt-5">
@@ -11,12 +13,21 @@ export default function RequestCard({ icon, type, user }) {
         </div>
       </div>
       <div className="flex gap-2">
-        <button className="text-xs px-2 py-1 bg-green-100 text-green-600 border border-green-600 rounded-sm cursor-pointer">
+        <Button
+          type="primary"
+          size="small"
+          className="!font-inter !px-2 !text-xs cursor-pointer"
+        >
           Accept
-        </button>
-        <button className="text-xs px-2 py-1 bg-red-100 text-red-600 border border-red-600 rounded-sm cursor-pointer">
+        </Button>
+        <Button
+          type="primary"
+          danger
+          size="small"
+          className="!font-inter !px-2 !text-xs cursor-pointer"
+        >
           Reject
-        </button>
+        </Button>
       </div>
     </div>
   );

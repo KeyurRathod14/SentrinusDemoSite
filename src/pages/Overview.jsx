@@ -1,4 +1,5 @@
 import RequestCard from "@/components/RequestCard";
+import { Tag } from "antd";
 import { ArrowUpRight, Cable, Camera, Usb } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -97,10 +98,10 @@ export default function Overview() {
       </div>
 
       {/* 🔹 Chart in div 5 */}
-      <div className="col-span-4 row-span-2 col-start-5 row-start-1 bg-white border-2 border-BorderGray rounded-lg p-4  flex flex-col">
+      <div className="col-span-4 row-span-2 col-start-5 row-start-1 bg-white border-2 border-BorderGray rounded-lg px-4 pt-3  flex flex-col">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <h2 className="text-2xl font-medium tracking-tighter">Alerts</h2>
+            <h2 className="text-xl font-medium tracking-tighter">Alerts</h2>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-3xl font-bold">120</span>
               <span className="bg-blue-100 text-blue-600 px-2 py-1 text-xs rounded-md">
@@ -114,7 +115,7 @@ export default function Overview() {
         </div>
 
         {/* Chart */}
-        <div className="flex-1 -ml-12 scale-90">
+        <div className="flex-1 -ml-14 scale-90">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData}>
               <defs>
@@ -209,7 +210,7 @@ export default function Overview() {
                 ram: 16,
                 gpu: 11,
                 status: "High CPU",
-                statusColor: "text-red-400 bg-red-100",
+                color: "red",
               },
               {
                 user: "Mike Havard",
@@ -217,7 +218,7 @@ export default function Overview() {
                 ram: 78,
                 gpu: 15,
                 status: "High RAM",
-                statusColor: "text-yellow-600 bg-yellow-100",
+                color: "orange",
               },
               {
                 user: "Roy Mathew",
@@ -225,7 +226,7 @@ export default function Overview() {
                 ram: 12,
                 gpu: 92,
                 status: "High GPU",
-                statusColor: "text-purple-500 bg-purple-100",
+                color: "purple",
               },
               {
                 user: "James Ross",
@@ -233,7 +234,7 @@ export default function Overview() {
                 ram: 12,
                 gpu: 23,
                 status: "High CPU",
-                statusColor: "text-red-400 bg-red-100",
+                color: "red",
               },
               {
                 user: "Louis Scott",
@@ -241,13 +242,13 @@ export default function Overview() {
                 ram: 12,
                 gpu: 69,
                 status: "High GPU",
-                statusColor: "text-purple-500 bg-purple-100",
+                color: "purple",
               },
             ].map((agent) => (
               <tr key={agent.user}>
                 <td className="px-3 py-2.75">{agent.user}</td>
                 <td
-                  className={`px-3 py-2 ${
+                  className={`px-3 py-2.75 ${
                     agent.cpu > 80 ? "text-red-400" : ""
                   }`}
                 >
@@ -267,12 +268,13 @@ export default function Overview() {
                 >
                   {agent.gpu}%
                 </td>
-                <td>
-                  <span
-                    className={`px-2 py-1 text-xs font-semibold rounded-md ${agent.statusColor}`}
+                <td className="px-3 py-2">
+                  <Tag
+                    className="!border-0 !rounded-sm font-inter text-xs"
+                    color={agent.color}
                   >
                     {agent.status}
-                  </span>
+                  </Tag>
                 </td>
               </tr>
             ))}

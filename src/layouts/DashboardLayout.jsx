@@ -25,14 +25,14 @@ import { BsIncognito } from "react-icons/bs";
 export default function DashboardLayout() {
   return (
     <SidebarLayout>
-      <div className="mt-8"></div>
+      <div className="mt-6"></div>
       <SidebarItem
         icon={<Building size={20} />}
         text="SecureU"
         isOrganization
       />
 
-      <div className="mt-5"></div>
+      <div className="mt-10"></div>
       <SidebarItem icon={<Home size={20} />} text="Overview" to="/" />
       <SidebarItem icon={<Monitor size={20} />} text="Devices" to="/devices" />
       <SidebarItem
