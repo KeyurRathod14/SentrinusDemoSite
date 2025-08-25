@@ -9,7 +9,8 @@
   /* Custom color tokens */
   --color-SidebarBlue: #111926;
   --color-TextGray: #9DA4AE;
-  --color-Gray: #28303B; 
+  --color-Gray: #28303B;
+  --color-BorderGray: #E0DFDE;
 }
 
 html, body {

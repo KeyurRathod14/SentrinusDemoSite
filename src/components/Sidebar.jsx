@@ -3,9 +3,9 @@ import SentrinusWhite2 from "@/assets/SentrinusWhite2.png";
 import { Tooltip } from "antd"; // ✅ Ant Design Tooltip
 import {
   ChevronDown,
-  ChevronFirst,
-  ChevronLast,
   ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
   LogOut,
 } from "lucide-react";
 import { createContext, useContext, useState } from "react";
@@ -73,16 +73,16 @@ export default function SidebarLayout({ children }) {
           className="absolute -right-3 top-14 w-8 h-8 flex items-center justify-center cursor-pointer
                  rounded-md bg-SidebarBlue border border-Gray text-white shadow-md"
         >
-          {expanded ? <ChevronFirst size={18} /> : <ChevronLast size={18} />}
+          {expanded ? <ChevronsLeft size={18} /> : <ChevronsRight size={18} />}
         </button>
       </aside>
 
       {/* Main Content */}
       <main className="flex-1 bg-gray-50">
-        <div className="flex items-center justify-between gap-3 p-4 bg-gray-50">
+        <div className="flex items-center justify-between gap-3 px-4 py-3 bg-gray-50">
           <h1 className="font-medium tracking-tighter text-4xl">{path}</h1>
         </div>
-        <div className="p-4">
+        <div className="flex-1 overflow-hidden">
           <Outlet />
         </div>
       </main>
