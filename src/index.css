@@ -17,6 +17,27 @@ html, body {
   font-family: var(--font-sans);
 }
 
+.ant-table,
+.ant-table * {
+  font-family: var(--font-sans) !important;
+}
+
+/* Force pagination to use Inter font */
+.ant-pagination,
+.ant-pagination * {
+  font-family: var(--font-sans) !important;
+}
+
+
+/* Custom table border styling */
+.custom-table .ant-table {
+  border-left: 2px solid var(--color-BorderGray);
+  border-right: 2px solid var(--color-BorderGray);
+  border-bottom: 2px solid var(--color-BorderGray);
+  border-top: none !important; /* remove top border */
+  border-radius: 0; /* keeps edges sharp */
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

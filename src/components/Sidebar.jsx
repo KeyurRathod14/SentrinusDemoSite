@@ -45,9 +45,10 @@ export default function SidebarLayout({ children }) {
         location.pathname.slice(2);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
+      {/* Sidebar (fixed height, no scroll with page) */}
       <aside
-        className={`relative h-screen ${
+        className={`relative h-screen flex-shrink-0 ${
           expanded ? "w-64" : "w-20"
         } transition-all duration-300`}
       >
@@ -72,7 +73,7 @@ export default function SidebarLayout({ children }) {
             </ul>
           </SidebarContext.Provider>
 
-          {/* Account (fixed at bottom) */}
+          {/* Account (fixed bottom) */}
           <div className="flex p-5">
             <div className="w-12 h-10 rounded-full bg-blue-400 flex items-center justify-center cursor-pointer">
               JD
@@ -95,18 +96,18 @@ export default function SidebarLayout({ children }) {
         <button
           onClick={() => setExpanded((curr) => !curr)}
           className="absolute -right-3 top-14 w-8 h-8 flex items-center justify-center cursor-pointer
-                 rounded-md bg-SidebarBlue border border-Gray text-white shadow-md"
+                       rounded-md bg-SidebarBlue border border-Gray text-white shadow-md"
         >
           {expanded ? <ChevronsLeft size={18} /> : <ChevronsRight size={18} />}
         </button>
       </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 bg-gray-50">
+      {/* Main Content (scrollable) */}
+      <main className="flex-1 flex flex-col overflow-hidden">
+        {/* Sticky Header */}
         <div className="flex items-center justify-between gap-3 px-4 py-3 bg-gray-50">
           <h1 className="font-medium tracking-tighter text-3xl">{path}</h1>
 
-          {/* Search + DateTime */}
           <div className="flex items-center gap-2">
             {/* Search Bar */}
             <div className="w-72">
@@ -119,13 +120,14 @@ export default function SidebarLayout({ children }) {
 
             {/* Date & Time */}
             <div className="text-right">
-              <p className="">{formattedDate}</p>
+              <p>{formattedDate}</p>
               <p className="text-sm">{formattedTime}</p>
             </div>
           </div>
         </div>
 
-        <div className="flex-1 overflow-hidden">
+        {/* Scrollable content area */}
+        <div className="flex-1 overflow-y-auto bg-gray-50 p-4">
           <Outlet />
         </div>
       </main>

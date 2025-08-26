@@ -21,7 +21,6 @@ export default function RequestCard({ icon, type, user }) {
           Accept
         </Button>
         <Button
-          type="primary"
           danger
           size="small"
           className="!font-inter !px-2 !text-xs cursor-pointer"
