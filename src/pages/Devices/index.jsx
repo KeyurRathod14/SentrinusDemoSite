@@ -1,6 +1,6 @@
 import { Tabs } from "antd";
 import DevicesTable from "./components/DevicesTable";
-import GroupsTable from "./components/GroupsTable";
+import Groups from "./components/Groups";
 
 export default function index() {
   const items = [
@@ -12,7 +12,7 @@ export default function index() {
     {
       key: "2",
       label: "Groups",
-      children: <GroupsTable />,
+      children: <Groups />,
     },
   ];
   return (

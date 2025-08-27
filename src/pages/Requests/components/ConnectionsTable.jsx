@@ -62,7 +62,7 @@ export default function ConnectionsTable() {
           <ButtonWithIcon
             icon={ShieldCheck}
             text="Accept"
-            className="bg-green-600 text-white"
+            className="bg-blue-600 text-white"
           />
           <ButtonWithIcon
             icon={ShieldX}
@@ -99,7 +99,7 @@ export default function ConnectionsTable() {
           <ButtonWithIcon
             icon={ShieldCheck}
             text="Accept"
-            className="bg-green-600 text-white"
+            className="bg-blue-600 text-white"
           />
           <ButtonWithIcon
             icon={ShieldX}

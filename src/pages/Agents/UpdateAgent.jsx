@@ -50,16 +50,21 @@ export default function UpdateAgent() {
       title: "Actions",
       dataIndex: "actions",
       key: "actions",
-      render: () => (
-        <div className="flex items-center gap-3">
-          <ButtonWithIcon
-            icon={Upload}
-            text="Update"
-            className="bg-blue-600 text-white"
-          />
-        </div>
-      ),
-      width: 170,
+      render: (_, record) =>
+        record.hasUpdate ? (
+          <div className="flex items-center gap-3">
+            <ButtonWithIcon
+              icon={Upload}
+              text="Update"
+              className="bg-blue-600 text-white"
+            />
+          </div>
+        ) : (
+          <span className="text-TextGray text-sm">
+            No New Update
+          </span>
+        ),
+      width: 200,
     },
   ];
 

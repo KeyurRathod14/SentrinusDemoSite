@@ -13,6 +13,7 @@ export const updateAgents = [
     device: "Windows 10 Pro",
     agentVersion: "1.0.0",
     avatar: CarsonDarrin,
+    hasUpdate: true,
   },
   {
     key: "2",
@@ -22,6 +23,7 @@ export const updateAgents = [
     device: "Windows 10 Home",
     agentVersion: "1.0.0",
     avatar: FranzPerez,
+    hasUpdate: false, // no update
   },
   {
     key: "3",
@@ -31,6 +33,7 @@ export const updateAgents = [
     device: "Windows 11 Home",
     agentVersion: "1.0.0",
     avatar: AdityaMehra,
+    hasUpdate: true,
   },
   {
     key: "4",
@@ -40,6 +43,7 @@ export const updateAgents = [
     device: "Windows 10",
     agentVersion: "1.0.0",
     avatar: NehaKulkarni,
+    hasUpdate: false, // no update
   },
   {
     key: "5",
@@ -49,5 +53,7 @@ export const updateAgents = [
     device: "Windows 11 Home",
     agentVersion: "1.0.0",
     avatar: RohanIyer,
+    hasUpdate: true,
   },
 ];
+

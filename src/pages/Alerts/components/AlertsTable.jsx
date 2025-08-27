@@ -107,7 +107,7 @@ export default function AlertsTable({ status }) {
           <ButtonWithIcon
             icon={ShieldCheck}
             text="Move to Resolved"
-            className="bg-green-600 text-white"
+            className="bg-blue-600 text-white"
           />
           <ButtonWithIcon
             icon={ShieldX}
