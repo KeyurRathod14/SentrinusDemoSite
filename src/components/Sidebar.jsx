@@ -37,12 +37,28 @@ export default function SidebarLayout({ children }) {
     second: "numeric",
   });
 
-  // Generate a page title from the current route
-  const path =
-    location.pathname === "/"
-      ? "Overview"
-      : location.pathname.slice(1).charAt(0).toUpperCase() +
-        location.pathname.slice(2);
+  // Inside SidebarLayout.jsx, before return
+  const routeToParent = {
+    "/connections": "Settings",
+    "/integrations": "Settings",
+    "/notifications": "Settings",
+    "/access": "Settings",
+    "/manage": "Settings",
+    "/update-agent": "Agents",
+    "/download-agent": "Agents",
+  };
+
+  // derive title
+  let path;
+  if (location.pathname === "/") {
+    path = "Overview";
+  } else if (routeToParent[location.pathname]) {
+    path = routeToParent[location.pathname];
+  } else {
+    path =
+      location.pathname.slice(1).charAt(0).toUpperCase() +
+      location.pathname.slice(2);
+  }
 
   return (
     <div className="flex h-screen overflow-hidden">
