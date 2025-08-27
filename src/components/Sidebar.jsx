@@ -106,7 +106,7 @@ export default function SidebarLayout({ children }) {
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Sticky Header */}
         <div className="flex items-center justify-between gap-3 px-4 py-3 bg-gray-50">
-          <h1 className="font-medium tracking-tighter text-3xl">{path}</h1>
+          <h1 className="font-medium tracking-normal text-3xl">{path}</h1>
 
           <div className="flex items-center gap-2">
             {/* Search Bar */}

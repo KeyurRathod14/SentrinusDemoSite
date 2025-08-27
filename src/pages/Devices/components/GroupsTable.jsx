@@ -1,7 +1,7 @@
+import ButtonWithIcon from "@/components/ButtonWithIcon";
 import { groups } from "@/dummyData/GroupsData";
 import { Avatar, Checkbox, Table, Tag } from "antd";
 import { Pencil, Plus, Trash } from "lucide-react";
-import ButtonWithIcon from "../ButtonWithIcon";
 
 const { Group: AvatarGroup } = Avatar;
 
@@ -23,33 +23,6 @@ export default function GroupsTable() {
           <span className="font-medium">{text}</span>
         </div>
       ),
-    },
-    {
-      title: "Tags",
-      dataIndex: "tags",
-      key: "tags",
-      render: (tags) => (
-        <>
-          {tags.map((tag) => {
-            let color =
-              tag === "Administrator"
-                ? "red"
-                : tag === "Development"
-                ? "blue"
-                : tag === "Sales"
-                ? "gold"
-                : tag === "Account"
-                ? "cyan"
-                : "green";
-            return (
-              <Tag bordered={false} color={color} key={tag}>
-                {tag}
-              </Tag>
-            );
-          })}
-        </>
-      ),
-      width: 220,
     },
     {
       title: "Users",
@@ -103,7 +76,7 @@ export default function GroupsTable() {
           <ButtonWithIcon
             icon={Plus}
             text="Add New Group"
-            className="bg-green-100 text-green-600"
+            className="bg-blue-600 text-white"
           />
         </div>
       </div>

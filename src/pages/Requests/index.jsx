@@ -1,8 +1,8 @@
-import AccessTable from "@/components/Tables/AccessTable";
-import ConnectionsTable from "@/components/Tables/ConnectionsTable";
 import { Tabs } from "antd";
+import AccessTable from "./components/AccessTable";
+import ConnectionsTable from "./components/ConnectionsTable";
 
-export default function Requests() {
+export default function index() {
   const items = [
     {
       key: "1",

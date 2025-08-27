@@ -2,18 +2,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashboardLayout from "@/layouts/DashboardLayout.jsx";
 
-import Overview from "@/pages/Overview.jsx";
-import Devices from "@/pages/Devices.jsx";
-import Alerts from "@/pages/Alerts.jsx";
-import Requests from "@/pages/Requests.jsx";
-import UpdateAgent from "@/pages/UpdateAgent.jsx";
-import DownloadAgent from "@/pages/DownloadAgent.jsx";
-import Connections from "@/pages/Connections.jsx";
-import Integrations from "@/pages/Integrations.jsx";
-import Notifications from "@/pages/Notifications.jsx";
-import Access from "@/pages/Access.jsx";
-import Manage from "@/pages/Manage.jsx";
-import Support from "@/pages/Support.jsx";
+import Overview from "@/pages/Overview/index.jsx";
+import Devices from "@/pages/Devices/index.jsx";
+import Alerts from "@/pages/Alerts/index.jsx";
+import Requests from "@/pages/Requests/index.jsx";
+import UpdateAgent from "@/pages/Agents/UpdateAgent.jsx";
+import DownloadAgent from "@/pages/Agents/DownloadAgent.jsx";
+import Connections from "@/pages/Settings/Connections.jsx";
+import Integrations from "@/pages/Settings/Integrations.jsx";
+import Notifications from "@/pages/Settings/Notifications.jsx";
+import Access from "@/pages/Settings/Access.jsx";
+import Manage from "@/pages/Settings/Manage.jsx";
+import Support from "@/pages/Support/Support.jsx";
 
 function App() {
   return (

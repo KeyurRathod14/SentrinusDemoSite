@@ -1,7 +1,7 @@
+import ButtonWithIcon from "@/components/ButtonWithIcon";
 import { devices } from "@/dummyData/DevicesData";
 import { Avatar, Checkbox, Table, Tag } from "antd";
 import { GlobeLock, Trash } from "lucide-react";
-import ButtonWithIcon from "../ButtonWithIcon";
 
 export default function DevicesTable() {
   // Table Columns
@@ -26,9 +26,13 @@ export default function DevicesTable() {
       key: "name",
       render: (text, record) => (
         <div className="flex items-center gap-2">
-          <Avatar style={{ backgroundColor: "#87d068" }}>
-            {record.initials}
-          </Avatar>
+          {record.avatar ? (
+            <Avatar src={record.avatar} size={34} />
+          ) : (
+            <Avatar style={{ backgroundColor: "#87d068" }}>
+              {record.initials}
+            </Avatar>
+          )}
           <div className="flex flex-col leading-tight">
             <span className="font-medium">{text}</span>
             <span className="text-xs text-TextGray">{record.email}</span>
@@ -98,12 +102,12 @@ export default function DevicesTable() {
           <ButtonWithIcon
             icon={GlobeLock}
             text="Global Device Restriction"
-            className="bg-green-100 text-green-600"
+            className="bg-blue-600 text-white"
           />
           <ButtonWithIcon
             icon={Trash}
             text="Remove User"
-            className="bg-red-100 text-red-600"
+            className="bg-white text-red-600"
           />
         </div>
       </div>

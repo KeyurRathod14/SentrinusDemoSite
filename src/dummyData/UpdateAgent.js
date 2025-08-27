@@ -4,10 +4,9 @@ import FranzPerez from "@/assets/avatars/FranzPerez.png";
 import NehaKulkarni from "@/assets/avatars/NehaKulkarni.png";
 import RohanIyer from "@/assets/avatars/RohanIyer.png";
 
-export const connections = [
+export const updateAgents = [
   {
     key: "1",
-    date: "02/04/2025",
     name: "Carson Darrin",
     initials: "JD",
     email: "carson.darrin@apple.com",
@@ -17,7 +16,6 @@ export const connections = [
   },
   {
     key: "2",
-    date: "08/04/2025",
     name: "Franz Perez",
     initials: "FP",
     email: "franz.perez@apple.com",
@@ -27,7 +25,6 @@ export const connections = [
   },
   {
     key: "3",
-    date: "14/04/2025",
     name: "Aditya Mehra",
     initials: "AM",
     email: "aditya.mehra@apple.com",
@@ -37,7 +34,6 @@ export const connections = [
   },
   {
     key: "4",
-    date: "18/04/2025",
     name: "Neha Kulkarni",
     initials: "NK",
     email: "neha.kulkarni@apple.com",
@@ -47,7 +43,6 @@ export const connections = [
   },
   {
     key: "5",
-    date: "25/04/2025",
     name: "Rohan Iyer",
     initials: "RI",
     email: "rohan.iyer@apple.com",

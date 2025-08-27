@@ -1,4 +1,4 @@
-import RequestCard from "@/components/RequestCard";
+import RequestCard from "@/pages/Overview/components/RequestCard";
 import { Tag } from "antd";
 import { ArrowUpRight, Cable, Camera, Usb } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -22,9 +22,9 @@ const chartData = [
   { name: "Sun", alerts: 65 },
 ];
 
-export default function Overview() {
+export default function index() {
   return (
-    <div className="grid grid-cols-8 grid-rows-4 gap-2 w-full h-full px-4 overflow-hidden">
+    <div className="grid grid-cols-8 grid-rows-4 gap-2 w-full h-full px-1 overflow-hidden">
       {/* Devices */}
       <div className="col-span-2 row-span-1 bg-white border-2 border-BorderGray rounded-lg p-3">
         <div className="flex items-center justify-between">
@@ -177,7 +177,7 @@ export default function Overview() {
 
       {/* Placeholder 7 */}
       {/* High Resource Usage Agents */}
-      <div className="col-span-4 row-span-2 col-start-5 row-start-3 bg-white border-2 border-BorderGray rounded-lg p-4 overflow-auto">
+      <div className="col-span-4 row-span-2 col-start-5 row-start-3 bg-white border-2 border-BorderGray rounded-lg p-4 overflow-hidden">
         <h1 className="tracking-tighter text-lg font-medium mb-4">
           High Resource Usage Agents
         </h1>

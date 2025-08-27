@@ -1,3 +1,9 @@
+import AdityaMehra from "@/assets/avatars/AdityaMehra.png";
+import CarsonDarrin from "@/assets/avatars/CarsonDarrin.png";
+import FranzPerez from "@/assets/avatars/FranzPerez.png";
+import NehaKulkarni from "@/assets/avatars/NehaKulkarni.png";
+import RohanIyer from "@/assets/avatars/RohanIyer.png";
+
 export const access = [
   {
     key: "1",
@@ -7,6 +13,7 @@ export const access = [
     email: "carson.darrin@apple.com",
     device: "Windows 10 Pro",
     access: "USB Access",
+    avatar: CarsonDarrin,
   },
   {
     key: "2",
@@ -16,6 +23,7 @@ export const access = [
     email: "franz.perez@apple.com",
     device: "Windows 10 Home",
     access: "Unblock Downloads",
+    avatar: FranzPerez,
   },
   {
     key: "3",
@@ -25,6 +33,7 @@ export const access = [
     email: "aditya.mehra@apple.com",
     device: "Windows 11 Home",
     access: "Full Administrator Access",
+    avatar: AdityaMehra,
   },
   {
     key: "4",
@@ -34,6 +43,7 @@ export const access = [
     email: "neha.kulkarni@apple.com",
     device: "Windows 10",
     access: "Webcam Access",
+    avatar: NehaKulkarni,
   },
   {
     key: "5",
@@ -43,5 +53,6 @@ export const access = [
     email: "rohan.iyer@apple.com",
     device: "Windows 11 Home",
     access: "USB Access",
+    avatar: RohanIyer,
   },
 ];

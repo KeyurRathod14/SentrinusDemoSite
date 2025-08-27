@@ -1,8 +1,8 @@
-import DevicesTable from "@/components/Tables/DevicesTable";
-import GroupsTable from "@/components/Tables/GroupsTable";
 import { Tabs } from "antd";
+import DevicesTable from "./components/DevicesTable";
+import GroupsTable from "./components/GroupsTable";
 
-export default function Devices() {
+export default function index() {
   const items = [
     {
       key: "1",

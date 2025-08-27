@@ -1,7 +1,7 @@
-import AlertsTable from "@/components/Tables/AlertsTable";
 import { Tabs } from "antd";
+import AlertsTable from "./components/AlertsTable";
 
-export default function Alerts() {
+export default function index() {
   const items = [
     {
       key: "1",

@@ -1,3 +1,9 @@
+import AdityaMehra from "@/assets/avatars/AdityaMehra.png";
+import CarsonDarrin from "@/assets/avatars/CarsonDarrin.png";
+import FranzPerez from "@/assets/avatars/FranzPerez.png";
+import NehaKulkarni from "@/assets/avatars/NehaKulkarni.png";
+import RohanIyer from "@/assets/avatars/RohanIyer.png";
+
 export const devices = [
   {
     key: "1",
@@ -7,6 +13,7 @@ export const devices = [
     email: "carson.darrin@apple.com",
     tags: ["Administrator"],
     description: "Windows 10 Pro",
+    avatar: CarsonDarrin,
   },
   {
     key: "2",
@@ -16,6 +23,7 @@ export const devices = [
     email: "franz.perez@apple.com",
     tags: ["Developer"],
     description: "Windows 10 Home",
+    avatar: FranzPerez,
   },
   {
     key: "3",
@@ -25,6 +33,7 @@ export const devices = [
     email: "aditya.mehra@secureu.in",
     tags: ["CEO"],
     description: "Windows 11 Home",
+    avatar: AdityaMehra,
   },
   {
     key: "4",
@@ -34,6 +43,7 @@ export const devices = [
     email: "neha.kulkarni@secureu.in",
     tags: ["Intern"],
     description: "Windows 11 Home",
+    avatar: NehaKulkarni,
   },
   {
     key: "5",
@@ -43,5 +53,6 @@ export const devices = [
     email: "rohan.iyer@secureu.in",
     tags: ["Assistant"],
     description: "Windows 11 Home",
+    avatar: RohanIyer,
   },
 ];

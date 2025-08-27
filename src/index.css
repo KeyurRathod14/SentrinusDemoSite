@@ -34,8 +34,12 @@ html, body {
   border-left: 2px solid var(--color-BorderGray);
   border-right: 2px solid var(--color-BorderGray);
   border-bottom: 2px solid var(--color-BorderGray);
-  border-top: none !important; /* remove top border */
-  border-radius: 0; /* keeps edges sharp */
+  border-top: none !important;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden ;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

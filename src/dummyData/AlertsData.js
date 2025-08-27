@@ -1,3 +1,9 @@
+import AdityaMehra from "@/assets/avatars/AdityaMehra.png";
+import CarsonDarrin from "@/assets/avatars/CarsonDarrin.png";
+import FranzPerez from "@/assets/avatars/FranzPerez.png";
+import NehaKulkarni from "@/assets/avatars/NehaKulkarni.png";
+import RohanIyer from "@/assets/avatars/RohanIyer.png";
+
 export const alerts = [
   {
     key: "1",
@@ -8,6 +14,7 @@ export const alerts = [
     category: "Data Leakage",
     description: "Confidential Content Copied",
     status: "Resolved",
+    avatar: CarsonDarrin,
   },
   {
     key: "2",
@@ -18,6 +25,7 @@ export const alerts = [
     category: "File Integrity",
     description: "Multiple Login Attempts",
     status: "Unresolved",
+    avatar: FranzPerez,
   },
   {
     key: "3",
@@ -28,6 +36,7 @@ export const alerts = [
     category: "Authentication",
     description: "Suspicious File Activity Detected",
     status: "Unresolved",
+    avatar: AdityaMehra,
   },
   {
     key: "4",
@@ -38,6 +47,7 @@ export const alerts = [
     category: "Access Violation",
     description: "Malware Signature match found",
     status: "Resolved",
+    avatar: NehaKulkarni,
   },
   {
     key: "5",
@@ -48,5 +58,6 @@ export const alerts = [
     category: "Authentication",
     description: "Unauthorised USB access",
     status: "Unresolved",
+    avatar: RohanIyer,
   },
 ];
