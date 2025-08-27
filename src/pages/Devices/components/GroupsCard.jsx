@@ -1,11 +1,9 @@
 import { Avatar } from "antd";
 import { Pencil, Trash } from "lucide-react";
 
-export default function GroupCard({ name, createdBy, users, className }) {
+export default function GroupCard({ name, createdBy, users }) {
   return (
-    <div
-      className={`col-span-2 row-span-2 bg-white border-b-2 border-BorderGray p-4 cursor-pointer ${className}`}
-    >
+    <div className="col-span-2 row-span-2 bg-white border-2 border-BorderGray rounded-lg p-4 cursor-pointer">
       <div className="flex items-center justify-between">
         <h1 className="font-medium text-xl tracking-tighter">{name}</h1>
         <div className="flex gap-2">
