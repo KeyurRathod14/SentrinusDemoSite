@@ -3,7 +3,7 @@ import { inviteAccess } from "@/dummyData/InviteAccessData";
 import { Avatar, Checkbox, Table, Tag } from "antd";
 import { Plus, Trash } from "lucide-react";
 
-export default function Access() {
+export default function index() {
   const columns = [
     {
       title: <Checkbox />, // header checkbox

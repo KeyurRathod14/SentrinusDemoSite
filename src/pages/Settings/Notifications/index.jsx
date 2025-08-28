@@ -2,7 +2,7 @@ import ButtonWithIcon from "@/components/ButtonWithIcon";
 import { Checkbox, Input } from "antd";
 import { Plus } from "lucide-react";
 
-export default function Notifications() {
+export default function index() {
   return (
     <>
       <div className="flex items-center justify-between p-5 border-2 border-BorderGray rounded-t-md">

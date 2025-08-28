@@ -7,11 +7,11 @@ import Alerts from "@/pages/Alerts/index.jsx";
 import Devices from "@/pages/Devices/index.jsx";
 import Overview from "@/pages/Overview/index.jsx";
 import Requests from "@/pages/Requests/index.jsx";
-import Access from "@/pages/Settings/Access.jsx";
+import Access from "@/pages/Settings/Access/index.jsx";
 import Connections from "@/pages/Settings/Connections.jsx";
 import Integrations from "@/pages/Settings/Integrations/index.jsx";
-import Manage from "@/pages/Settings/Manage.jsx";
-import Notifications from "@/pages/Settings/Notifications/Notifications.jsx";
+import Manage from "@/pages/Settings/Manage/index.jsx";
+import Notifications from "@/pages/Settings/Notifications/index.jsx";
 import Support from "@/pages/Support/Support.jsx";
 
 const router = createBrowserRouter([
