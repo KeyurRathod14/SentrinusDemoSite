@@ -11,7 +11,7 @@ import Access from "@/pages/Settings/Access.jsx";
 import Connections from "@/pages/Settings/Connections.jsx";
 import Integrations from "@/pages/Settings/Integrations/index.jsx";
 import Manage from "@/pages/Settings/Manage.jsx";
-import Notifications from "@/pages/Settings/Notifications.jsx";
+import Notifications from "@/pages/Settings/Notifications/Notifications.jsx";
 import Support from "@/pages/Support/Support.jsx";
 
 const router = createBrowserRouter([
