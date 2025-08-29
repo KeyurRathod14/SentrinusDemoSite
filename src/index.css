@@ -54,6 +54,10 @@ html, body {
   box-shadow: none !important;        /* remove AntD shadow if you only want your own */
 }
 
+.custom-modal .ant-modal-body {
+  padding: 0px;
+  font-family: "Inter";
+}
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
