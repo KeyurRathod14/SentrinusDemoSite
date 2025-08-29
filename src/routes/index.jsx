@@ -1,6 +1,8 @@
 import DashboardLayout from "@/layouts/DashboardLayout.jsx";
 import { createBrowserRouter } from "react-router-dom";
 
+import Account from "@/pages/Account/index";
+import Billing from "@/pages/Billing/index";
 import DownloadAgent from "@/pages/Agents/DownloadAgent.jsx";
 import UpdateAgent from "@/pages/Agents/UpdateAgent.jsx";
 import Alerts from "@/pages/Alerts/index.jsx";
@@ -34,6 +36,8 @@ const router = createBrowserRouter([
       { path: "manage", element: <Manage /> },
 
       { path: "support", element: <Support /> },
+      { path: "account", element: <Account /> },
+      { path: "billing", element: <Billing /> },
     ],
   },
 ]);

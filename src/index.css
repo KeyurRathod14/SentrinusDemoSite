@@ -49,6 +49,11 @@ html, body {
   box-shadow: none !important;        /* remove AntD shadow if you only want your own */
 }
 
+.account-popover .ant-popover-inner {
+  background: transparent !important; /* remove white */
+  box-shadow: none !important;        /* remove AntD shadow if you only want your own */
+}
+
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

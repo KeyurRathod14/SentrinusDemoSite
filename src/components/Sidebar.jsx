@@ -6,17 +6,22 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
+  CreditCard,
+  EllipsisVertical,
   LogOut,
+  User,
 } from "lucide-react";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const SidebarContext = createContext();
 
 export default function SidebarLayout({ children }) {
   const [expanded, setExpanded] = useState(true);
   const location = useLocation();
+  const [open, setOpen] = useState(false);
   const [dateTime, setDateTime] = useState(new Date());
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,6 +30,11 @@ export default function SidebarLayout({ children }) {
 
     return () => clearInterval(timer);
   }, []);
+
+  // ✅ close Popover whenever route changes
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   const formattedDate = dateTime.toLocaleDateString("en-GB", {
     day: "numeric",
@@ -103,7 +113,41 @@ export default function SidebarLayout({ children }) {
                 <h4 className="font-semibold">John Doe</h4>
                 <span className="text-xs">johndoe@gmail.com</span>
               </div>
-              <LogOut size={16} className="text-white cursor-pointer" />
+
+              <Popover
+                placement="topRight"
+                trigger="click"
+                open={open}
+                onOpenChange={setOpen}
+                classNames={{
+                  root: "account-popover",
+                }}
+                arrow={false}
+                content={
+                  <ul className="w-56 font-inter bg-SidebarBlue border border-Gray rounded-md shadow-lg px-2 py-2">
+                    <li
+                      className="px-3 py-2 rounded-md cursor-pointer flex items-center gap-2 text-white hover:bg-Gray/50"
+                      onClick={() => navigate("account")}
+                    >
+                      <User size={16} /> My Account
+                    </li>
+                    <li
+                      className="px-3 py-2 rounded-md cursor-pointer flex items-center gap-2 text-white hover:bg-Gray/50"
+                      onClick={() => navigate("billing")}
+                    >
+                      <CreditCard size={16} /> Plan & Billing
+                    </li>
+                    <li className="px-3 py-2 rounded-md cursor-pointer flex items-center gap-2 text-red-400 hover:bg-Gray/50">
+                      <LogOut size={16} /> Logout
+                    </li>
+                  </ul>
+                }
+              >
+                <EllipsisVertical
+                  size={16}
+                  className="text-white cursor-pointer"
+                />
+              </Popover>
             </div>
           </div>
         </nav>
@@ -218,8 +262,9 @@ export function SidebarDropdown({ icon, text, children }) {
 
   // ✅ close Popover whenever route changes
   useEffect(() => {
-    setOpen(false);
-  }, [location.pathname]);
+    // Close only when the sidebar is collapsed (Popover mode)
+    if (!expanded) setOpen(false);
+  }, [location.pathname, expanded]);
 
   const parentItem = (
     <li
