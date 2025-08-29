@@ -1,6 +1,6 @@
 import SentrinusWhite from "@/assets/SentrinusWhite.png";
 import SentrinusWhite2 from "@/assets/SentrinusWhite2.png";
-import { Tooltip } from "antd"; // ✅ Ant Design Tooltip
+import { Popover, Tooltip } from "antd"; // ✅ Ant Design Tooltip
 import {
   ChevronDown,
   ChevronRight,
@@ -8,7 +8,7 @@ import {
   ChevronsRight,
   LogOut,
 } from "lucide-react";
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 const SidebarContext = createContext();
@@ -152,11 +152,12 @@ export default function SidebarLayout({ children }) {
 }
 
 /* Base Sidebar Item */
-export function SidebarItem({ icon, text, isOrganization, to }) {
+export function SidebarItem({ icon, text, isOrganization, to, forceExpanded }) {
   const { expanded } = useContext(SidebarContext);
   const location = useLocation();
 
   const isActive = to && location.pathname === to;
+  const showExpanded = forceExpanded || expanded; // ✅ override
 
   const itemContent = (
     <li
@@ -168,7 +169,7 @@ export function SidebarItem({ icon, text, isOrganization, to }) {
             ? "bg-blue-600 text-white"
             : "hover:bg-Gray/50 hover:text-white text-TextGray"
         }
-        ${expanded ? "px-4 py-2" : "justify-center py-2"}
+        ${showExpanded ? "px-4 py-2" : "justify-center py-2"}
       `}
     >
       <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
@@ -176,7 +177,7 @@ export function SidebarItem({ icon, text, isOrganization, to }) {
       </div>
       <span
         className={`text-sm overflow-hidden transition-all duration-300 ${
-          expanded ? "ml-3 w-40 opacity-100" : "w-0 opacity-0"
+          showExpanded ? "ml-3 w-40 opacity-100" : "w-0 opacity-0"
         }`}
       >
         {text}
@@ -184,26 +185,28 @@ export function SidebarItem({ icon, text, isOrganization, to }) {
     </li>
   );
 
-  const wrappedContent = !expanded ? (
-    <Tooltip
-      placement="right"
-      title={text}
-      arrow={false}
-      styles={{
-        body: {
-          fontFamily: "Inter, sans-serif",
-          fontSize: "14px",
-          fontWeight: 500,
-          color: "#f8f9fa",
-          marginLeft: "8px",
-        },
-      }}
-    >
-      {itemContent}
-    </Tooltip>
-  ) : (
-    itemContent
-  );
+  // ✅ Tooltip only when sidebar collapsed & not forceExpanded
+  const wrappedContent =
+    !expanded && !forceExpanded ? (
+      <Tooltip
+        placement="right"
+        title={text}
+        arrow={false}
+        styles={{
+          body: {
+            fontFamily: "Inter, sans-serif",
+            fontSize: "14px",
+            fontWeight: 500,
+            color: "#f8f9fa",
+            marginLeft: "8px",
+          },
+        }}
+      >
+        {itemContent}
+      </Tooltip>
+    ) : (
+      itemContent
+    );
 
   return to ? <Link to={to}>{wrappedContent}</Link> : wrappedContent;
 }
@@ -211,10 +214,16 @@ export function SidebarItem({ icon, text, isOrganization, to }) {
 export function SidebarDropdown({ icon, text, children }) {
   const { expanded } = useContext(SidebarContext);
   const [open, setOpen] = useState(false);
+  const location = useLocation(); // ✅ track route changes
+
+  // ✅ close Popover whenever route changes
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   const parentItem = (
     <li
-      onClick={() => setOpen(!open)}
+      onClick={() => expanded && setOpen(!open)} // only toggle if expanded
       className={`relative flex items-center font-medium rounded-md cursor-pointer transition-colors group
             hover:bg-Gray/50 hover:text-white text-TextGray
             ${expanded ? "px-4 py-2" : "justify-center py-2"}
@@ -238,30 +247,37 @@ export function SidebarDropdown({ icon, text, children }) {
     </li>
   );
 
-  const wrappedParent = !expanded ? (
-    <Tooltip
-      placement="right"
-      title={text}
-      arrow={false}
-      styles={{
-        body: {
-          fontFamily: "Inter, sans-serif",
-          fontSize: "14px",
-          fontWeight: 500,
-          color: "#f8f9fa",
-          marginLeft: "8px",
-        },
-      }}
-    >
-      {parentItem}
-    </Tooltip>
-  ) : (
-    parentItem
-  );
+  if (!expanded) {
+    // 🔹 collapsed: controlled Popover
+    return (
+      <Popover
+        placement="right"
+        trigger="click"
+        open={open}
+        onOpenChange={setOpen}
+        classNames={{
+          root: "sidebar-popover",
+        }}
+        content={
+          <ul className="w-56 font-inter bg-SidebarBlue border border-Gray rounded-md shadow-lg px-2 py-1">
+            {React.Children.map(children, (child) =>
+              React.cloneElement(child, {
+                forceExpanded: true,
+                onClick: () => setOpen(false), // ✅ close on click
+              })
+            )}
+          </ul>
+        }
+      >
+        {parentItem}
+      </Popover>
+    );
+  }
 
+  // 🔹 expanded: normal dropdown
   return (
     <>
-      {wrappedParent}
+      {parentItem}
       <ul
         className={`ml-8 overflow-hidden transition-all duration-300 ease-in-out ${
           open && expanded ? "max-h-56 opacity-100" : "max-h-0 opacity-0"

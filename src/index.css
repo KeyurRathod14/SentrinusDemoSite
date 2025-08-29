@@ -42,6 +42,14 @@ html, body {
   overflow: hidden ;
 }
 
+/* somewhere in your global CSS */
+.sidebar-popover .ant-popover-inner {
+  background: transparent !important; /* remove white */
+  padding: 0 !important;              /* remove padding */
+  box-shadow: none !important;        /* remove AntD shadow if you only want your own */
+}
+
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
