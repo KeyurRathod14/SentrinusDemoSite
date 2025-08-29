@@ -22,7 +22,7 @@ export default function index() {
         <div className=" flex gap-4 mt-4">
           <Input
             defaultValue="johndoe@gmail.com"
-            disabled
+            readOnly
             className="!w-xs !font-inter"
           />
           <ButtonWithIcon

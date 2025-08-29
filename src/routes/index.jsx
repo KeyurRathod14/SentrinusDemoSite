@@ -8,7 +8,7 @@ import Devices from "@/pages/Devices/index.jsx";
 import Overview from "@/pages/Overview/index.jsx";
 import Requests from "@/pages/Requests/index.jsx";
 import Access from "@/pages/Settings/Access/index.jsx";
-import Connections from "@/pages/Settings/Connections.jsx";
+import Connections from "@/pages/Settings/Connections/index.jsx";
 import Integrations from "@/pages/Settings/Integrations/index.jsx";
 import Manage from "@/pages/Settings/Manage/index.jsx";
 import Notifications from "@/pages/Settings/Notifications/index.jsx";
