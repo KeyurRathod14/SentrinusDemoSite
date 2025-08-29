@@ -1,15 +1,38 @@
 import ButtonWithIcon from "@/components/ButtonWithIcon";
-import { alerts } from "@/dummyData/AlertsData";
 import { Avatar, Checkbox, Table } from "antd";
-import { ShieldCheck, ShieldX, Trash } from "lucide-react";
+import { ReceiptText, ShieldCheck, ShieldX } from "lucide-react";
+import { useState } from "react";
+import AlertsModal from "./AlertModal";
 
-export default function AlertsTable({ status }) {
-  // 🔹 Filter alerts based on status prop
+export default function AlertsTable({ status, alertList, onUpdate }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUsers, setSelectedUsers] = useState([]);
+
+  // Filter alerts based on status prop
   const filteredAlerts = status
-    ? alerts.filter(
+    ? alertList.filter(
         (alert) => alert.status?.toLowerCase() === status.toLowerCase()
       )
-    : alerts;
+    : alertList;
+
+  const handleOpenModal = (record) => {
+    setSelectedUsers([record]);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedUsers([]);
+  };
+
+  const handleConfirmUpdate = (newStatus) => {
+    if (selectedUsers.length > 0) {
+      selectedUsers.forEach((user) => {
+        onUpdate(user.key, newStatus); // 🔹 Call parent to update
+      });
+    }
+    handleCloseModal();
+  };
 
   const columns = [
     {
@@ -81,11 +104,12 @@ export default function AlertsTable({ status }) {
     },
     {
       title: "",
-      key: "delete",
-      render: () => (
-        <Trash
+      key: "details",
+      render: (_, record) => (
+        <ReceiptText
           size={18}
           className="text-TextGray cursor-pointer hover:text-red-700"
+          onClick={() => handleOpenModal(record)}
         />
       ),
       width: 80,
@@ -112,7 +136,7 @@ export default function AlertsTable({ status }) {
           <ButtonWithIcon
             icon={ShieldX}
             text="Move to Unresolved"
-            className="bg-white text-red-600"
+            className="bg-white text-blue-600"
           />
         </div>
       </div>
@@ -127,6 +151,14 @@ export default function AlertsTable({ status }) {
           showSizeChanger: true,
           pageSizeOptions: ["5", "10", "20"],
         }}
+      />
+
+      {/* Modal */}
+      <AlertsModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={(newStatus) => handleConfirmUpdate(newStatus)}
+        alertData={selectedUsers[0]}
       />
     </>
   );
