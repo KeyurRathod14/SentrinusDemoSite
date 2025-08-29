@@ -11,8 +11,9 @@ export const devices = [
     name: "Carson Darrin",
     initials: "JD",
     email: "carson.darrin@apple.com",
+    status: "active",
     tags: ["Administrator"],
-    description: "Windows 10 Pro",
+    opeatingSytem: "Windows 10 Pro",
     avatar: CarsonDarrin,
   },
   {
@@ -21,8 +22,9 @@ export const devices = [
     name: "Franz Perez",
     initials: "FP",
     email: "franz.perez@apple.com",
+    status: "inactive",
     tags: ["Developer"],
-    description: "Windows 10 Home",
+    opeatingSytem: "Windows 10 Home",
     avatar: FranzPerez,
   },
   {
@@ -31,8 +33,9 @@ export const devices = [
     name: "Aditya Mehra",
     initials: "AM",
     email: "aditya.mehra@secureu.in",
+    status: "active",
     tags: ["CEO"],
-    description: "Windows 11 Home",
+    opeatingSytem: "Windows 11 Home",
     avatar: AdityaMehra,
   },
   {
@@ -41,8 +44,9 @@ export const devices = [
     name: "Neha Kulkarni",
     initials: "NK",
     email: "neha.kulkarni@secureu.in",
+    status: "inactive",
     tags: ["Intern"],
-    description: "Windows 11 Home",
+    opeatingSytem: "Windows 11 Home",
     avatar: NehaKulkarni,
   },
   {
@@ -51,8 +55,10 @@ export const devices = [
     name: "Rohan Iyer",
     initials: "RI",
     email: "rohan.iyer@secureu.in",
+    status: "active",
     tags: ["Assistant"],
-    description: "Windows 11 Home",
+    opeatingSytem: "Windows 11 Home",
     avatar: RohanIyer,
   },
 ];
+

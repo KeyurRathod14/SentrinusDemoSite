@@ -26,13 +26,25 @@ export default function DevicesTable() {
       key: "name",
       render: (text, record) => (
         <div className="flex items-center gap-2">
-          {record.avatar ? (
-            <Avatar src={record.avatar} size={34} />
-          ) : (
-            <Avatar style={{ backgroundColor: "#87d068" }}>
-              {record.initials}
-            </Avatar>
-          )}
+          <div className="relative">
+            {record.avatar ? (
+              <Avatar src={record.avatar} size={34} />
+            ) : (
+              <Avatar style={{ backgroundColor: "#87d068" }}>
+                {record.initials}
+              </Avatar>
+            )}
+
+            {/* Status Dot */}
+            {record.status && (
+              <span
+                className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white ${
+                  record.status === "active" ? "bg-green-500" : "bg-red-500"
+                }`}
+              />
+            )}
+          </div>
+
           <div className="flex flex-col leading-tight">
             <span className="font-medium">{text}</span>
             <span className="text-xs text-TextGray">{record.email}</span>
@@ -40,6 +52,7 @@ export default function DevicesTable() {
         </div>
       ),
     },
+
     {
       title: "Tags",
       dataIndex: "tags",
@@ -68,9 +81,9 @@ export default function DevicesTable() {
       width: 220,
     },
     {
-      title: "Description",
-      dataIndex: "description",
-      key: "description",
+      title: "Operating System",
+      dataIndex: "opeatingSytem",
+      key: "opeatingSytem",
       render: (text) => <span className="text-TextGray">{text}</span>,
       width: 200,
     },
@@ -101,7 +114,7 @@ export default function DevicesTable() {
           />
           <ButtonWithIcon
             icon={GlobeLock}
-            text="Global Device Restriction"
+            text="Policies"
             className="bg-blue-600 text-white"
           />
           <ButtonWithIcon
