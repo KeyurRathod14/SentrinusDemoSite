@@ -48,7 +48,7 @@ export default function AccessModal({ isOpen, onClose, onConfirm, record }) {
           </div>
 
           {/* System/User Info */}
-          <div className="grid grid-cols-2 gap-y-2 gap-x-8 text-xs text-TextGray">
+          <div className="grid grid-cols-2 gap-y-3 gap-x-8 text-xs text-TextGray">
             <div>
               <span className="font-medium">OS :</span> {record.device}
             </div>
