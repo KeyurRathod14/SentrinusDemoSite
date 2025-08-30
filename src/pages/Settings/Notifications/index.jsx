@@ -1,8 +1,13 @@
+import { useState } from "react";
 import ButtonWithIcon from "@/components/ButtonWithIcon";
 import { Checkbox, Input } from "antd";
 import { Plus } from "lucide-react";
+import { devices } from "@/dummyData/DevicesData";
+import EmailModal from "./components/EmailModal";
 
-export default function index() {
+export default function Index() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
       <div className="flex items-center justify-between p-5 border-2 border-BorderGray rounded-t-md">
@@ -19,7 +24,7 @@ export default function index() {
           notification email address is automatically synchronized with your
           organization's owner's email address.
         </p>
-        <div className=" flex gap-4 mt-4">
+        <div className="flex gap-4 mt-4">
           <Input
             defaultValue="johndoe@gmail.com"
             readOnly
@@ -29,6 +34,7 @@ export default function index() {
             icon={Plus}
             text="Add Email"
             className="bg-blue-600 text-white"
+            onClick={() => setIsModalOpen(true)}
           />
         </div>
       </div>
@@ -50,12 +56,15 @@ export default function index() {
             Platform changelog and product updates
           </Checkbox>
         </div>
-        <ButtonWithIcon
-          // icon={Plus}
-          text="Save"
-          className="bg-blue-600 text-white"
-        />
+        <ButtonWithIcon text="Save" className="bg-blue-600 text-white" />
       </div>
+
+      {/* Email Modal */}
+      <EmailModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        users={devices}
+      />
     </>
   );
 }
