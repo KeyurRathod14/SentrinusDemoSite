@@ -1,5 +1,5 @@
 import ButtonWithIcon from "@/components/ButtonWithIcon";
-import { Avatar, Checkbox, Table } from "antd";
+import { Avatar, Table } from "antd";
 import { ReceiptText, ShieldCheck, ShieldX } from "lucide-react";
 import { useState } from "react";
 import AlertsModal from "./AlertModal";
@@ -8,7 +8,6 @@ export default function AlertsTable({ status, alertList, onUpdate }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState([]);
 
-  // Filter alerts based on status prop
   const filteredAlerts = status
     ? alertList.filter(
         (alert) => alert.status?.toLowerCase() === status.toLowerCase()
@@ -28,20 +27,23 @@ export default function AlertsTable({ status, alertList, onUpdate }) {
   const handleConfirmUpdate = (newStatus) => {
     if (selectedUsers.length > 0) {
       selectedUsers.forEach((user) => {
-        onUpdate(user.key, newStatus); // 🔹 Call parent to update
+        onUpdate(user.key, newStatus);
       });
     }
     handleCloseModal();
   };
 
+  // 🔹 Bulk update handler
+  const handleBulkUpdate = (newStatus) => {
+    if (selectedUsers.length > 0) {
+      selectedUsers.forEach((user) => {
+        onUpdate(user.key, newStatus);
+      });
+      setSelectedUsers([]); // clear selection after update
+    }
+  };
+
   const columns = [
-    {
-      title: <Checkbox />,
-      dataIndex: "checkbox",
-      key: "checkbox",
-      render: () => <Checkbox />,
-      width: 50,
-    },
     {
       title: "Date",
       dataIndex: "date",
@@ -116,6 +118,14 @@ export default function AlertsTable({ status, alertList, onUpdate }) {
     },
   ];
 
+  // 🔹 AntD row selection
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      setSelectedUsers(selectedRows);
+    },
+    selectedRowKeys: selectedUsers.map((u) => u.key),
+  };
+
   return (
     <>
       <div className="flex items-center justify-between p-5 border-2 border-BorderGray rounded-t-md">
@@ -132,11 +142,13 @@ export default function AlertsTable({ status, alertList, onUpdate }) {
             icon={ShieldCheck}
             text="Move to Resolved"
             className="bg-blue-600 text-white"
+            onClick={() => handleBulkUpdate("Resolved")}
           />
           <ButtonWithIcon
             icon={ShieldX}
             text="Move to Unresolved"
             className="bg-white text-blue-600"
+            onClick={() => handleBulkUpdate("Unresolved")}
           />
         </div>
       </div>
@@ -146,6 +158,7 @@ export default function AlertsTable({ status, alertList, onUpdate }) {
         columns={columns}
         dataSource={filteredAlerts}
         rowKey="key"
+        rowSelection={{ rowSelection, ...rowSelection, columnWidth: 60 }} // ✅ enables row selection
         pagination={{
           pageSize: 5,
           showSizeChanger: true,
